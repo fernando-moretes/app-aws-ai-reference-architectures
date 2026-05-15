@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Six production-shaped reference architectures for AI workloads on AWS."
+    />
+    <title>aws-ai-reference-architectures</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">AWS + AI architecture catalog</p>
+          <h1>aws-ai-reference-architectures</h1>
+          <p class="lede">
+            Six production-shaped AI workload patterns with diagrams, trade-offs,
+            Terraform skeletons, Well-Architected notes, and cost framing.
+          </p>
+          <div class="actions">
+            <a class="button button--primary" href="https://github.com/fernandofatech/aws-ai-reference-architectures">
+              View repository
+            </a>
+            <a class="button" href="https://fernandofatech.github.io/aws-ai-reference-architectures/">
+              Read docs
+            </a>
+          </div>
+        </div>
+        <aside class="panel">
+          <p class="panel__label">Portfolio signal</p>
+          <strong>Reference designs for solution architecture interviews, discovery workshops, and PoC planning.</strong>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section__header">
+          <p class="eyebrow">Architectures</p>
+          <h2>Patterns that map directly to modern AWS AI conversations.</h2>
+        </div>
+        <div class="grid">
+          <article>
+            <span>01</span>
+            <h3>RAG with Bedrock + OpenSearch</h3>
+            <p>Internal Q&A and document search using retrieval-augmented generation.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Multi-agent orchestration</h3>
+            <p>Durable agent workflows with Bedrock Agents and Step Functions.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Streaming AI inference</h3>
+            <p>Token-streaming chat UX with API Gateway, Lambda, and Bedrock.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Event-driven AI processing</h3>
+            <p>Async enrichment, classification, summarization, and moderation.</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>Fine-tuning pipeline</h3>
+            <p>SageMaker-oriented training pipeline with governance and cost notes.</p>
+          </article>
+          <article>
+            <span>06</span>
+            <h3>Secure agentic system</h3>
+            <p>Guardrails, tenant isolation, auditability, and private networking.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="strip">
+        <p>Mermaid diagrams</p>
+        <p>Terraform skeletons</p>
+        <p>Cost sizing</p>
+        <p>Well-Architected review</p>
+        <p>ADRs</p>
+      </section>
+    </main>
+  </body>
+</html>
