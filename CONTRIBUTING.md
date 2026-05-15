@@ -34,7 +34,7 @@ Open a PR **into `develop`**. Title must follow [Conventional Commits](https://w
 
 Each architecture lives in its own folder with this layout:
 
-```
+```text
 architectures/NN-name/
 ├── README.md            # the entire architecture in one page
 ├── diagram.mmd          # Mermaid source

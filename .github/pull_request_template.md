@@ -14,3 +14,5 @@
 - [ ] Target branch is `develop`
 - [ ] If new architecture: all eight sections present (problem, components, diagram, decisions, cost, WA review, trade-offs, terraform skeleton)
 - [ ] If new architecture: terraform fmt -recursive passes
+- [ ] Frontend/docs/security workflows pass when touched
+- [ ] No secrets, credentials, or generated build artifacts committed

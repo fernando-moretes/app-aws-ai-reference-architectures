@@ -1,0 +1,7 @@
+import { cp, mkdir, rm } from "node:fs/promises";
+
+await rm("dist", { force: true, recursive: true });
+await mkdir("dist", { recursive: true });
+await cp("public", "dist", { recursive: true });
+
+console.log("Built static site into dist/");
