@@ -1,0 +1,10 @@
+flowchart LR
+    User((User)) --> APIG[API Gateway]
+    APIG --> Cognito[Cognito Authorizer]
+    APIG --> Lambda[Lambda - orchestrator]
+    Lambda -->|RetrieveAndGenerate| KB[Bedrock Knowledge Base]
+    KB --> OS[(OpenSearch Serverless<br/>vector collection)]
+    KB -->|read documents| S3[(S3 - corpus)]
+    KB -->|embed + synth| Bedrock[Amazon Bedrock<br/>Titan + Claude]
+    Lambda --> CW[CloudWatch Logs + Metrics]
+    Lambda --> User

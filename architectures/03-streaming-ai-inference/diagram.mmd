@@ -1,0 +1,9 @@
+flowchart LR
+    Browser((Browser)) -->|HTTPS| CF[CloudFront]
+    CF --> S3[(S3 - chat UI)]
+    Browser -->|SSE| FURL[Function URL]
+    FURL --> Lambda[Lambda<br/>response streaming]
+    Lambda -->|InvokeModelWithResponseStream| Bedrock[Amazon Bedrock]
+    Lambda --> Cognito[Cognito - validate JWT]
+    Lambda --> DDB[(DynamoDB<br/>conversation memory)]
+    Lambda --> CW[CloudWatch<br/>TTFT, tokens/s]
