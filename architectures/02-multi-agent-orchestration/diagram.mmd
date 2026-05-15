@@ -1,0 +1,15 @@
+flowchart TB
+    Start([Trigger]) --> SF[Step Functions Standard]
+    SF --> A1[Task: Search Agent]
+    A1 --> A2[Task: Summary Agent fan-out]
+    A2 --> A3[Task: Writer Agent]
+    A3 --> Approval{Human approval?}
+    Approval -->|Wait for token| Notify[SNS/SES → reviewer]
+    Notify --> Approval
+    Approval -->|Approved| Publish[Task: Publish]
+    Approval -->|Rejected| Revise[Task: Revise Agent]
+    Revise --> A3
+    Publish --> Done([End])
+    SF -.workflow state.-> DDB[(DynamoDB)]
+    A1 & A2 & A3 & Revise -.invoke.-> Agents[Bedrock Agents]
+    Agents --> KB[(Knowledge Bases)]

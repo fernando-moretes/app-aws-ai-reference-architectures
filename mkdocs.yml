@@ -1,0 +1,84 @@
+site_name: AWS AI Reference Architectures
+site_url: https://fernandofatech.github.io/aws-ai-reference-architectures/
+site_description: Six production-shaped reference architectures for AI workloads on AWS — diagrams, decisions, Terraform skeletons, cost analysis and Well-Architected reviews.
+site_author: Fernando Francisco Azevedo
+repo_url: https://github.com/fernandofatech/aws-ai-reference-architectures
+repo_name: fernandofatech/aws-ai-reference-architectures
+edit_uri: edit/develop/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search
+  - mermaid2
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/fernandofatech
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/fernando-francisco-azevedo/
+    - icon: fontawesome/solid/globe
+      link: https://fernando.moretes.com
+
+nav:
+  - Home: index.md
+  - How to read these: how-to-read.md
+  - Architectures:
+      - "01 — RAG with Bedrock + OpenSearch": architectures/01-rag-bedrock-opensearch.md
+      - "02 — Multi-agent orchestration": architectures/02-multi-agent-orchestration.md
+      - "03 — Streaming AI inference": architectures/03-streaming-ai-inference.md
+      - "04 — Event-driven AI processing": architectures/04-event-driven-ai-processing.md
+      - "05 — Fine-tuning pipeline": architectures/05-fine-tuning-pipeline.md
+      - "06 — Secure agentic system": architectures/06-secure-agentic-system.md
+  - Contributing: contributing.md

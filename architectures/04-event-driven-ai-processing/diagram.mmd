@@ -1,0 +1,11 @@
+flowchart LR
+    Producers[Producers<br/>app / SaaS / S3] --> EB[EventBridge<br/>input bus]
+    EB --> Queue[(SQS Standard)]
+    Queue --> Worker[Lambda worker]
+    Worker -->|InvokeModel| Bedrock[Amazon Bedrock]
+    Worker --> DDB[(DynamoDB<br/>idempotency + results)]
+    Worker --> EBout[EventBridge<br/>result bus]
+    EBout --> Notify[SNS / email]
+    EBout --> Index[Indexer / search]
+    Queue -.failed.-> DLQ[(SQS DLQ)]
+    DLQ --> CW[CloudWatch alarm]

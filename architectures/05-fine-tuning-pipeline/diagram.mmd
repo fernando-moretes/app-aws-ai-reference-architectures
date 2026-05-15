@@ -1,0 +1,26 @@
+flowchart TB
+    Trigger([Schedule or manual])
+    Raw[(S3 - raw datasets)]
+    Glue[AWS Glue ETL]
+    Curated[(S3 - curated)]
+    Golden[(S3 - golden eval set)]
+    ETL[Run Glue job]
+    Train[Train: SageMaker Training Job]
+    Eval[Eval: SageMaker Processing Job]
+    Compare{Better than incumbent?}
+    Register[Register in Model Registry]
+    Reject[Reject + emit alarm]
+    MR[(SageMaker Model Registry)]
+    MLF[MLflow tracking]
+
+    Trigger --> ETL
+    Raw --> ETL --> Curated
+    Curated --> Train
+    Train --> Eval
+    Golden --> Eval
+    Eval --> Compare
+    Compare -->|yes| Register
+    Compare -->|no| Reject
+    Register --> MR
+    Train --> MLF
+    Eval --> MLF
