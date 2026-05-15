@@ -4,14 +4,14 @@
 
 This repo is **document-first**. The architectures live as Markdown with embedded Mermaid; the Terraform under each architecture is a *skeleton* (resources + wiring, no opinions on tags/IAM/state backends).
 
-```
+```text
 .
 ├── architectures/NN-name/   ← one folder per reference
 │   ├── README.md            ← the architecture, end-to-end
 │   ├── diagram.mmd          ← Mermaid source
 │   └── terraform/           ← skeleton IaC
 ├── docs/                    ← MkDocs Material site (built from architectures/ + extras)
-├── frontend/                ← Next.js catalog (Vercel)
+├── frontend/                ← static catalog landing (Vercel)
 └── .github/workflows/       ← CI + docs deploy
 ```
 

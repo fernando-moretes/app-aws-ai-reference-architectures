@@ -1,0 +1,98 @@
+name: Vercel
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "frontend/**"
+      - ".github/workflows/vercel.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "frontend/**"
+      - ".github/workflows/vercel.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: vercel-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VERCEL_CLI_VERSION: "50.28.0"
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  preview:
+    name: Preview deploy
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check Vercel secrets
+        id: secrets
+        run: |
+          if [ -z "$VERCEL_TOKEN" ] || [ -z "$VERCEL_ORG_ID" ] || [ -z "$VERCEL_PROJECT_ID" ]; then
+            echo "::notice::Skipping Vercel preview deploy because VERCEL_TOKEN, VERCEL_ORG_ID or VERCEL_PROJECT_ID is not configured."
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - run: npm install -g vercel@${VERCEL_CLI_VERSION}
+        if: steps.secrets.outputs.configured == 'true'
+      - run: vercel pull --cwd frontend --yes --environment=preview --token=$VERCEL_TOKEN
+        if: steps.secrets.outputs.configured == 'true'
+      - run: vercel build --cwd frontend --token=$VERCEL_TOKEN
+        if: steps.secrets.outputs.configured == 'true'
+      - id: deploy
+        if: steps.secrets.outputs.configured == 'true'
+        run: echo "url=$(vercel deploy --cwd frontend --prebuilt --token=$VERCEL_TOKEN)" >> "$GITHUB_OUTPUT"
+      - uses: actions/github-script@v7
+        if: steps.secrets.outputs.configured == 'true'
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `Vercel preview: ${{ steps.deploy.outputs.url }}`
+            })
+
+  production:
+    name: Production deploy
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check Vercel secrets
+        id: secrets
+        run: |
+          if [ -z "$VERCEL_TOKEN" ] || [ -z "$VERCEL_ORG_ID" ] || [ -z "$VERCEL_PROJECT_ID" ]; then
+            echo "::notice::Skipping Vercel production deploy because VERCEL_TOKEN, VERCEL_ORG_ID or VERCEL_PROJECT_ID is not configured."
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - run: npm install -g vercel@${VERCEL_CLI_VERSION}
+        if: steps.secrets.outputs.configured == 'true'
+      - run: vercel pull --cwd frontend --yes --environment=production --token=$VERCEL_TOKEN
+        if: steps.secrets.outputs.configured == 'true'
+      - run: vercel build --cwd frontend --prod --token=$VERCEL_TOKEN
+        if: steps.secrets.outputs.configured == 'true'
+      - run: vercel deploy --cwd frontend --prebuilt --prod --token=$VERCEL_TOKEN
+        if: steps.secrets.outputs.configured == 'true'

@@ -59,7 +59,7 @@ Every architecture answers the same questions:
 
 ## Repo layout
 
-```
+```text
 .
 ├── architectures/                   # one folder per reference
 │   ├── 01-rag-bedrock-opensearch/
@@ -69,9 +69,21 @@ Every architecture answers the same questions:
 │   ├── 05-fine-tuning-pipeline/
 │   └── 06-secure-agentic-system/
 ├── docs/                            # MkDocs Material site (GitHub Pages)
-├── frontend/                        # Next.js catalog page (Vercel)
+├── frontend/                        # dependency-free static catalog landing (Vercel)
 └── .github/workflows/               # CI + docs deploy
 ```
+
+## Automation
+
+This portfolio repo ships with automated checks for the parts that matter in public technical work:
+
+- **Frontend:** lint, static build, and `npm audit`.
+- **Docs:** strict MkDocs build and GitHub Pages deploy.
+- **Security:** CodeQL, dependency review, Trivy filesystem scan, and Gitleaks secret scan.
+- **Maintenance:** Dependabot for GitHub Actions and frontend dependencies.
+- **Vercel:** preview deploys for PRs and production deploys from `main` when Vercel secrets are configured.
+
+See [OPERATIONS.md](OPERATIONS.md) for the full workflow and required secrets.
 
 ## Contributing
 

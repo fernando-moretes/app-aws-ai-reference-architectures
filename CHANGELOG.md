@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file. The format 
 ## [0.1.0] - 2026-05-15
 
 ### Added
+
 - Six reference architectures, each with: problem statement, components, Mermaid diagram, key decisions (MADR-light), cost analysis at three scales, Well-Architected review, trade-offs, and a Terraform skeleton.
 - Architectures:
   - 01 — RAG with Bedrock + OpenSearch Serverless

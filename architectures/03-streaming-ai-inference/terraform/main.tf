@@ -71,14 +71,14 @@ resource "aws_iam_role_policy" "lambda_extra" {
 }
 
 resource "aws_lambda_function" "stream" {
-  function_name = "${var.project}-stream"
-  role          = aws_iam_role.lambda.arn
-  runtime       = "nodejs20.x"
-  handler       = "index.handler"
-  filename      = var.lambda_zip
+  function_name    = "${var.project}-stream"
+  role             = aws_iam_role.lambda.arn
+  runtime          = "nodejs20.x"
+  handler          = "index.handler"
+  filename         = var.lambda_zip
   source_code_hash = filebase64sha256(var.lambda_zip)
-  timeout       = 60
-  memory_size   = 1024
+  timeout          = 60
+  memory_size      = 1024
 
   environment {
     variables = {

@@ -1,17 +1,21 @@
 # Catalog landing
 
-Next.js 14 + Tailwind landing page rendering the six architectures as a card catalog. Each card links to the full architecture page on GitHub.
+Dependency-free static landing page rendering the six architectures as a card catalog. Each card links to the full architecture page on GitHub.
 
-## Local dev
+## Local development
 
 ```bash
 cd frontend
-npm install
+npm run lint
+npm run build
 npm run dev
 ```
 
 ## Deploy on Vercel
 
-- Import this repo on vercel.com.
-- Root Directory: `frontend/`
-- Framework preset: Next.js.
+The repo includes `.github/workflows/vercel.yml` for GitHub Actions based deploys.
+Configure these repository secrets before enabling production deploys:
+
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`

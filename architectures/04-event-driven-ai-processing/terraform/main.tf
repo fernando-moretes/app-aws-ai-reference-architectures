@@ -128,14 +128,14 @@ resource "aws_iam_role_policy" "worker_extra" {
 }
 
 resource "aws_lambda_function" "worker" {
-  function_name = "${var.project}-worker"
-  role          = aws_iam_role.worker.arn
-  runtime       = "python3.12"
-  handler       = "worker.handler"
-  filename      = var.lambda_zip
-  source_code_hash = filebase64sha256(var.lambda_zip)
-  timeout       = 60
-  memory_size   = 512
+  function_name                  = "${var.project}-worker"
+  role                           = aws_iam_role.worker.arn
+  runtime                        = "python3.12"
+  handler                        = "worker.handler"
+  filename                       = var.lambda_zip
+  source_code_hash               = filebase64sha256(var.lambda_zip)
+  timeout                        = 60
+  memory_size                    = 512
   reserved_concurrent_executions = 20
 
   environment {
@@ -149,9 +149,9 @@ resource "aws_lambda_function" "worker" {
 }
 
 resource "aws_lambda_event_source_mapping" "from_queue" {
-  event_source_arn = aws_sqs_queue.main.arn
-  function_name    = aws_lambda_function.worker.arn
-  batch_size       = 5
+  event_source_arn                   = aws_sqs_queue.main.arn
+  function_name                      = aws_lambda_function.worker.arn
+  batch_size                         = 5
   maximum_batching_window_in_seconds = 2
 }
 

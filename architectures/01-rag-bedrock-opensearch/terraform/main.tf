@@ -57,7 +57,7 @@ resource "aws_opensearchserverless_security_policy" "network" {
     Rules = [{
       ResourceType = "dashboard"
       Resource     = ["collection/${var.project}-kb"]
-    }, {
+      }, {
       ResourceType = "collection"
       Resource     = ["collection/${var.project}-kb"]
     }]
