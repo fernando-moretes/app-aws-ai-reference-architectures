@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ai-architectures.moretes.com/sitemap.xml

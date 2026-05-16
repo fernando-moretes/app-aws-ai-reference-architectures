@@ -18,6 +18,17 @@
 
 ---
 
+## Live portfolio / Portfolio ao vivo
+
+- **Production:** [AWS AI Reference Architectures](https://ai-architectures.moretes.com)
+- **Documentation:** [Project docs](https://fernandofatech.github.io/aws-ai-reference-architectures/)
+- **GitHub:** [fernandofatech/aws-ai-reference-architectures](https://github.com/fernandofatech/aws-ai-reference-architectures)
+- **Author:** [Fernando Francisco Azevedo](https://fernando.moretes.com) · [LinkedIn](https://www.linkedin.com/in/fernando-francisco-azevedo/) · [GitHub](https://github.com/fernandofatech)
+
+This public repository is part of a bilingual portfolio focused on solution architecture, AWS, AI, MCP/tooling, DevSecOps, and production-ready engineering practices.
+
+Este repositório público faz parte de um portfólio bilíngue focado em arquitetura de soluções, AWS, IA, MCP/tools, DevSecOps e boas práticas de engenharia para produção.
+
 ## Why this exists
 
 Most AI-on-AWS examples online are either *toy notebooks* (one file, no IaC, no security) or *200-page enterprise white papers* (impressive, unreadable). This repo sits in the middle: six **opinionated** reference architectures that are detailed enough to be useful for real designs, and concise enough to be read in 10 minutes each.
@@ -81,7 +92,7 @@ This portfolio repo ships with automated checks for the parts that matter in pub
 - **Docs:** strict MkDocs build and GitHub Pages deploy.
 - **Security:** CodeQL, dependency review, Trivy filesystem scan, and Gitleaks secret scan.
 - **Maintenance:** Dependabot for GitHub Actions and frontend dependencies.
-- **Vercel:** preview deploys for PRs and production deploys from `main` when Vercel secrets are configured.
+- **Vercel:** automatic preview and production deploys are connected through Vercel Git integration.
 
 See [OPERATIONS.md](OPERATIONS.md) for the full workflow and required secrets.
 
