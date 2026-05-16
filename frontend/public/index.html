@@ -1,86 +1,122 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Six production-shaped reference architectures for AI workloads on AWS."
-    />
-    <title>aws-ai-reference-architectures</title>
+    <meta name="description" content="Catálogo de arquiteturas de referência para workloads de IA na AWS, com RAG, agentes, inferência em streaming, governança, FinOps e revisão Well-Architected. Reference architecture catalog for AI workloads on AWS, covering RAG, agents, streaming inference, governance, FinOps, and Well-Architected review." />
+    <meta name="keywords" content="AWS, AI, Bedrock, SageMaker, RAG, MLOps, Solution Architecture, Well-Architected, Fernando Francisco Azevedo, moretes.com, arquitetura de solucoes" />
+    <meta name="author" content="Fernando Francisco Azevedo" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://ai-architectures.moretes.com/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://ai-architectures.moretes.com/#pt" />
+    <link rel="alternate" hreflang="en" href="https://ai-architectures.moretes.com/#en" />
+    <link rel="me" href="https://www.linkedin.com/in/fernando-francisco-azevedo/" />
+    <link rel="me" href="https://github.com/fernandofatech" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fernando Moretes Architecture Portfolio" />
+    <meta property="og:title" content="AWS AI Reference Architectures | Fernando Moretes" />
+    <meta property="og:description" content="Catálogo de arquiteturas de referência para workloads de IA na AWS, com RAG, agentes, inferência em streaming, governança, FinOps e revisão Well-Architected. Reference architecture catalog for AI workloads on AWS, covering RAG, agents, streaming inference, governance, FinOps, and Well-Architected review." />
+    <meta property="og:url" content="https://ai-architectures.moretes.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AWS AI Reference Architectures | Fernando Moretes" />
+    <meta name="twitter:description" content="Catálogo de arquiteturas de referência para workloads de IA na AWS, com RAG, agentes, inferência em streaming, governança, FinOps e revisão Well-Architected. Reference architecture catalog for AI workloads on AWS, covering RAG, agents, streaming inference, governance, FinOps, and Well-Architected review." />
+    <title>AWS AI Reference Architectures | Fernando Moretes</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main>
-      <section class="hero">
-        <div>
-          <p class="eyebrow">AWS + AI architecture catalog</p>
-          <h1>aws-ai-reference-architectures</h1>
-          <p class="lede">
-            Six production-shaped AI workload patterns with diagrams, trade-offs,
-            Terraform skeletons, Well-Architected notes, and cost framing.
-          </p>
-          <div class="actions">
-            <a class="button button--primary" href="https://github.com/fernandofatech/aws-ai-reference-architectures">
-              View repository
-            </a>
-            <a class="button" href="https://fernandofatech.github.io/aws-ai-reference-architectures/">
-              Read docs
-            </a>
+    <div class="shell">
+      <nav class="nav" aria-label="Principal">
+        <a class="brand" href="https://fernando.moretes.com">Fernando Moretes</a>
+        <div class="nav__links">
+          <a href="https://github.com/fernandofatech/aws-ai-reference-architectures">GitHub</a>
+          <a href="https://www.linkedin.com/in/fernando-francisco-azevedo/">LinkedIn</a>
+          <a href="https://fernando.moretes.com">Portfolio</a>
+        </div>
+      </nav>
+
+      <main>
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Arquitetura de IA na AWS / AWS AI Architecture</p>
+            <h1>AWS AI Reference Architectures</h1>
+            <p class="lead">Catálogo de arquiteturas de referência para workloads de IA na AWS, com RAG, agentes, inferência em streaming, governança, FinOps e revisão Well-Architected.</p>
+            <div class="lang-grid" aria-label="Resumo bilingue">
+              <article id="pt" class="lang-card">
+                <strong>Português</strong>
+                <p>Catálogo de arquiteturas de referência para workloads de IA na AWS, com RAG, agentes, inferência em streaming, governança, FinOps e revisão Well-Architected.</p>
+              </article>
+              <article id="en" class="lang-card">
+                <strong>English</strong>
+                <p>Reference architecture catalog for AI workloads on AWS, covering RAG, agents, streaming inference, governance, FinOps, and Well-Architected review.</p>
+              </article>
+            </div>
+            <div class="actions">
+              <a class="button button--primary" href="https://github.com/fernandofatech/aws-ai-reference-architectures">Ver repositório / View repo</a>
+              <a class="button" href="https://fernandofatech.github.io/aws-ai-reference-architectures/">Documentação / Docs</a>
+              <a class="button" href="https://fernando.moretes.com">Perfil profissional</a>
+            </div>
           </div>
-        </div>
-        <aside class="panel">
-          <p class="panel__label">Portfolio signal</p>
-          <strong>Reference designs for solution architecture interviews, discovery workshops, and PoC planning.</strong>
-        </aside>
-      </section>
+          <aside class="panel" aria-label="Sinais de portfolio">
+            <p class="panel__label">Portfolio signal</p>
+            <strong>PoC publica para arquitetura de soluções, AWS, IA e engenharia DevSecOps.</strong>
+            <ul>
+              <li>RAG with Bedrock</li>
+              <li>OpenSearch</li>
+              <li>SageMaker</li>
+              <li>Well-Architected</li>
+              <li>Terraform</li>
+              <li>FinOps</li>
+            </ul>
+          </aside>
+        </section>
 
-      <section class="section">
-        <div class="section__header">
-          <p class="eyebrow">Architectures</p>
-          <h2>Patterns that map directly to modern AWS AI conversations.</h2>
-        </div>
-        <div class="grid">
-          <article>
-            <span>01</span>
-            <h3>RAG with Bedrock + OpenSearch</h3>
-            <p>Internal Q&A and document search using retrieval-augmented generation.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Multi-agent orchestration</h3>
-            <p>Durable agent workflows with Bedrock Agents and Step Functions.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Streaming AI inference</h3>
-            <p>Token-streaming chat UX with API Gateway, Lambda, and Bedrock.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Event-driven AI processing</h3>
-            <p>Async enrichment, classification, summarization, and moderation.</p>
-          </article>
-          <article>
-            <span>05</span>
-            <h3>Fine-tuning pipeline</h3>
-            <p>SageMaker-oriented training pipeline with governance and cost notes.</p>
-          </article>
-          <article>
-            <span>06</span>
-            <h3>Secure agentic system</h3>
-            <p>Guardrails, tenant isolation, auditability, and private networking.</p>
-          </article>
-        </div>
-      </section>
+        <section class="section" aria-labelledby="focus-title">
+          <div class="section__head">
+            <h2 id="focus-title">Arquitetura que mostra pensamento de solução.</h2>
+            <p>Conteúdo desenhado para entrevistas, discovery técnico, revisão executiva e demonstração prática de boas práticas em cloud e IA.</p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <span>01</span>
+              <h3>RAG corporativo</h3>
+              <p>Blueprint para busca semantica, grounding e respostas auditaveis com Amazon Bedrock e OpenSearch.</p>
+            </article>
+            <article class="card">
+              <span>02</span>
+              <h3>Agentes e workflows</h3>
+              <p>Padroes de orquestracao com Step Functions, eventos, avaliacao e guardrails.</p>
+            </article>
+            <article class="card">
+              <span>03</span>
+              <h3>Governanca de IA</h3>
+              <p>Controles de seguranca, custo, observabilidade e operacao para workloads produtivos.</p>
+            </article>
+          </div>
+        </section>
 
-      <section class="strip">
-        <p>Mermaid diagrams</p>
-        <p>Terraform skeletons</p>
-        <p>Cost sizing</p>
-        <p>Well-Architected review</p>
-        <p>ADRs</p>
-      </section>
-    </main>
+        <section class="section" aria-labelledby="proof-title">
+          <div class="section__head">
+            <h2 id="proof-title">Evidências técnicas / Technical proof</h2>
+            <p>Projetos com documentação, automação, testes e superfície pública pronta para avaliação rápida por recrutadores, líderes técnicos e times de arquitetura.</p>
+          </div>
+          <ul class="proof">
+            <li>Mermaid diagrams</li>
+            <li>Terraform skeletons</li>
+            <li>Cost sizing</li>
+            <li>ADRs</li>
+            <li>Security notes</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>
+          Fernando Francisco Azevedo ·
+          <a href="https://www.linkedin.com/in/fernando-francisco-azevedo/">LinkedIn</a> ·
+          <a href="https://github.com/fernandofatech">GitHub</a> ·
+          <a href="https://fernando.moretes.com">fernando.moretes.com</a>
+        </p>
+      </footer>
+    </div>
   </body>
 </html>
