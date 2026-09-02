@@ -1,18 +1,17 @@
-## Summary
+## O que muda
 
-<!-- One or two sentences. If adding a new architecture, link the new folder. -->
+<!-- Uma frase. O título do PR já segue Conventional Commits. -->
 
-## Type
+## Por quê
 
-- [ ] New architecture (new folder under `architectures/`)
-- [ ] Correction to existing architecture (cost, behavior, finding)
-- [ ] Doc site / tooling
+<!-- O motivo, não a implementação. Isto é o que alguém vai querer saber daqui a seis meses. -->
 
-## Checklist
+## Como verificar
 
-- [ ] Title follows [Conventional Commits](https://www.conventionalcommits.org)
-- [ ] Target branch is `develop`
-- [ ] If new architecture: all eight sections present (problem, components, diagram, decisions, cost, WA review, trade-offs, terraform skeleton)
-- [ ] If new architecture: terraform fmt -recursive passes
-- [ ] Frontend/docs/security workflows pass when touched
-- [ ] No secrets, credentials, or generated build artifacts committed
+<!-- Os passos para conferir que funciona. -->
+
+---
+
+- [ ] Título segue `<tipo>: <descrição em minúscula>`
+- [ ] Branch segue `<tipo>/<escopo>`
+- [ ] Testado localmente
