@@ -4,7 +4,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: app-aws-ai-reference-architectures
-  description: Bilingual AWS AI reference architecture portfolio with Bedrock, RAG, MLOps, Terraform, Well-Architected notes and Vercel deployment.
+  description: "Bilingual AWS AI reference architecture portfolio with Bedrock, RAG, MLOps, Terraform, Well-Architected notes and Vercel deployment."
   annotations:
     github.com/project-slug: fernando-moretes/app-aws-ai-reference-architectures
     backstage.io/source-location: url:https://github.com/fernando-moretes/app-aws-ai-reference-architectures
@@ -17,7 +17,9 @@ metadata:
       title: SonarQube
     - url: https://defectdojo.home.lab/product?name=app-aws-ai-reference-architectures
       title: DefectDojo
-  tags: [website, ci-generic.yml]
+  # tags so aceitam [a-z0-9-]: ci-generic.yml (ci-node.yml) tem ponto e reprovava
+  # todo componente na policy check do Backstage.
+  tags: [website, generic]
 spec:
   type: website
   lifecycle: production
