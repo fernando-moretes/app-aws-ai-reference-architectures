@@ -1,0 +1,25 @@
+# Gerado por fernando-moretes/platform. Não edite aqui: mude no orquestrador e
+# rode `make rollout`. É o que o Backstage (backstage.home.lab) lê deste repo.
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: app-aws-ai-reference-architectures
+  description: Bilingual AWS AI reference architecture portfolio with Bedrock, RAG, MLOps, Terraform, Well-Architected notes and Vercel deployment.
+  annotations:
+    github.com/project-slug: fernando-moretes/app-aws-ai-reference-architectures
+    backstage.io/source-location: url:https://github.com/fernando-moretes/app-aws-ai-reference-architectures
+    sonarqube.org/project-key: app-aws-ai-reference-architectures
+  links:
+    - url: https://github.com/fernando-moretes/app-aws-ai-reference-architectures/actions
+      title: Actions
+      icon: github
+    - url: https://sonarqube.home.lab/dashboard?id=app-aws-ai-reference-architectures
+      title: SonarQube
+    - url: https://defectdojo.home.lab/product?name=app-aws-ai-reference-architectures
+      title: DefectDojo
+  tags: [website, ci-generic.yml]
+spec:
+  type: website
+  lifecycle: production
+  owner: group:plataforma
+  system: homelab
