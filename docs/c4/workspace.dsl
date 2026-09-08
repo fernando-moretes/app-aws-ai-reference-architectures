@@ -7,12 +7,16 @@
  */
 workspace "app-aws-ai-reference-architectures" "Bilingual AWS AI reference architecture portfolio with Bedrock, RAG, MLOps, Terraform, Well-Architected notes and Vercel deployment." {
 
+    configuration {
+        scope softwaresystem
+    }
+
     model {
         usuario = person "Usuário"
         sistema = softwareSystem "app-aws-ai-reference-architectures" "Bilingual AWS AI reference architecture portfolio with Bedrock, RAG, MLOps, Terraform, Well-Architected notes and Vercel deployment." {
             app = container "Aplicação" "Descreva o que roda aqui" "ci-generic.yml"
         }
-        usuario -> sistema.app "Usa"
+        usuario -> sistema.app "Usa" "HTTPS"
     }
 
     views {
@@ -25,9 +29,19 @@ workspace "app-aws-ai-reference-architectures" "Bilingual AWS AI reference archi
             autoLayout lr
         }
         styles {
-            element "Person" { shape person; background #08427b; color #ffffff }
-            element "Software System" { background #1168bd; color #ffffff }
-            element "Container" { background #438dd5; color #ffffff }
+            element "Person" {
+                shape person
+                background #08427b
+                color #ffffff
+            }
+            element "Software System" {
+                background #1168bd
+                color #ffffff
+            }
+            element "Container" {
+                background #438dd5
+                color #ffffff
+            }
         }
     }
 }
