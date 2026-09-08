@@ -7,8 +7,12 @@ metadata:
   description: "Bilingual AWS AI reference architecture portfolio with Bedrock, RAG, MLOps, Terraform, Well-Architected notes and Vercel deployment."
   annotations:
     github.com/project-slug: fernando-moretes/app-aws-ai-reference-architectures
-    backstage.io/source-location: url:https://github.com/fernando-moretes/app-aws-ai-reference-architectures
+    # URL da arvore com barra final: e dela que o TechDocs resolve `dir:.`;
+    # sem a barra ele sobe um nivel e pede api.github.com/repos/<dono> (404).
+    backstage.io/source-location: url:https://github.com/fernando-moretes/app-aws-ai-reference-architectures/tree/main/
     sonarqube.org/project-key: app-aws-ai-reference-architectures
+    # TechDocs: mkdocs.yml + docs/ do proprio repositorio (rolados pelo platform)
+    backstage.io/techdocs-ref: dir:.
   links:
     - url: https://github.com/fernando-moretes/app-aws-ai-reference-architectures/actions
       title: Actions
